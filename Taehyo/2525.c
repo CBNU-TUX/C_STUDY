@@ -1,25 +1,49 @@
 ﻿#include <stdio.h>
 
+struct stack {
+	
+	int top;
+	int arr[top];
+
+};
+
+void chogiwha(int *top){
+	
+	struct stack s;
+	s->top = -1;
+}
+
+void ipryuk(int k){
+
+	if (s.top >= k) {
+		return;
+	}
+
+	scanf("%d", s.top);
+
+	for (int i = 0; i < s.top; i++) {
+		scanf("%d", &s.arr[i]);
+	}
+	
+
+}
+
 int main() {
 
-	int hour;
-	int min;
-	int time;
+	int k;
+	int top;
 
-	scanf("%d %d\n%d", &hour, &min, &time);
+	chogiwha(top);
 
-	hour = hour + time / 60;
+	struct stack *s;
 
-	min = min + (time % 60);
+	s->top = &top;
 
-	if (min >= 60) {
-		hour++;
-		min = min % 60;
+	scanf("%d", &k);
+
+	ipryuk(k);
+
+	for (int i = s->top - 1; i >= 0; i--) {
+		printf("%d ", s->top);
 	}
-
-	if (hour >= 24) {
-		hour = hour % 24;
-	}
-
-	printf("%d %d", hour, min);
 }
