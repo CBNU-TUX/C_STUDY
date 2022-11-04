@@ -1,62 +1,41 @@
 #include <stdio.h>
 
-int main(void)
+int main()
 {
-    int op,i,j;
-    int primes[10001];
-    for(i = 2; i<=10000; i++)
-        primes[i] = i;
-
-    i = 2;
-    while ((i*i) <= 10000)
+    while(1)
     {
-        if (primes[i] != 0)
-        {
-            for(j=2; j<10000; j++)
-            {
-                if (primes[i]*j > 10000)
-                    break;
-                else
-                    primes[primes[i]*j]=0;
-            }
-        }
-        i++;
-    }
-    scanf("%d", &op);
-    for(int i=0; i<op; i++)
-    {
-        int n;
-        scanf("%d", &n);
+        int number,i,j,count;
+        scanf("%d", &number);
+        if(number==0) break;
+        int primes[2*number+1];
+        //populating array with naturals numbers
+        for(i = 2; i<=2*number; i++)
+            primes[i] = i;
 
-        int sel, ser;
-        int mi = 0, minex=0;
-        if(n%2==0)
+        i = 2;
+        count=0;
+        while ((i*i) <= 2*number)
         {
-            mi = n/2;
-            minex = n/2;
-        }
-        else if(n%2==1)
-        {
-            mi=n/2;
-            minex=n/2+1;
-        }
-        for(int i=mi; i>1; i--)
-        {
-            if(primes[i] !=0 && primes[minex] != 0)
+            if (primes[i] != 0)
             {
-                if(primes[i]+primes[minex] == n)
+                for(j=2; j<2*number; j++)
                 {
-                    sel = primes[i];
-                    ser = primes[minex];
-                    printf("%d %d\n", sel, ser);
-                    break;
+                    if (primes[i]*j > 2*number)
+                        break;
+                    else
+                        // Instead of deleteing , making elemnets 0
+                        primes[primes[i]*j]=0;
                 }
-                else minex++;
             }
-            else{
-                minex++;
-                continue;
-            }
+            i++;
         }
+        for(i = number+1; i<=2*number; i++)
+        {
+            //If number is not 0 then it is prime
+            if (primes[i]!=0)
+                count++;
+        }
+        printf("%d\n", count);
     }
+    return 0;
 }
