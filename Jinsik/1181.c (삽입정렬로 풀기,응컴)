@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct node1{
+    char word[20001];
+    struct node1 *next;
+}node;
+
+int main(void)
+{
+    int n;
+    node *head = NULL;
+    scanf("%d", &n);
+    for(int i=0; i<n; i++)
+    {
+        
+        node *tail = NULL;
+        node *previous = NULL;
+        node *temp = NULL;
+
+        char words[20001];
+        scanf("%s", words);
+        temp = (node *)malloc(sizeof(node));
+        strcpy(temp->word, words);
+        temp->next = NULL;
+        if(head==NULL)
+        {
+            head = temp;
+        }
+        else{
+            tail = head;
+            previous = NULL;
+            
+            while(tail!=NULL && (strlen(tail->word) <= strlen(temp->word)))
+            {
+                if(strcmp(tail->word,temp->word)<0 && (strlen(tail->word) == strlen(temp->word)))
+                {
+                    previous = tail;
+                    tail = tail->next;
+                }
+                else if((strlen(tail->word) != strlen(temp->word))){
+                    previous = tail;
+                    tail = tail->next;
+                }
+                else{
+                    break;
+                }
+                // else if((strlen(tail->word)  strlen(temp->word))){
+                //     previous = tail;
+                //     tail = tail->next;
+                // }
+
+            }
+        }
+        if(previous == NULL)
+        {
+            temp->next = tail;
+            head = temp;
+        }
+        else
+        {
+            temp->next = tail;
+            previous->next = temp;
+        }
+        
+    }
+    printf("\n");
+    node *search;
+    node *search_pre;
+    search = head;
+    search_pre = NULL;
+    while(search!=NULL)
+    {
+        if(search_pre == NULL)
+        {
+            printf("%s\n", search->word);
+        }
+        else if(strcmp(search->word,search_pre->word)!=0) 
+        {
+            printf("%s\n", search->word);
+        }
+        search_pre = search;
+        search = search->next;
+    }
+    return 0;
+}
