@@ -1,42 +1,32 @@
-<<<<<<< HEAD
 #include <stdio.h>
 
-int main() {
 
-	int a;
+int swap(int a[], int b[]) {
 
-	scanf_s("%d", &a);
+	int k = 2;
+	for (int i = 0; i < 3; i++) {
 
-	for (int i = 0; i < a; i++) {
-
-		for (int j = 0; j < a-1 - i; j++) {
-			printf(" ");
-		}
-		for (int k = 0; k < i + 1; k++) {
-			printf("*");
-		}
-		printf("\n");
+		b[k] = a[i];
 	}
 
-=======
-#include <stdio.h>
-
+}
 int main() {
 
-	int a;
+	int num1[3];
+	int num2[3];
 
-	scanf_s("%d", &a);
+	int cn1[3];
+	int cn2[3];
 
-	for (int i = 0; i < a; i++) {
+	scanf_s("%d %d", num1, num2);
 
-		for (int j = 0; j < a-1 - i; j++) {
-			printf(" ");
-		}
-		for (int k = 0; k < i + 1; k++) {
-			printf("*");
-		}
-		printf("\n");
+	swap(num1, cn1);
+	swap(num2, cn2);
+	
+	if (cn1 > cn2) {
+		printf("%d", cn1);
 	}
-
->>>>>>> a1ce78351ea348a1dcbd85a3183737217cc51b15
+	else
+		printf("%d", cn2);
+	
 }
